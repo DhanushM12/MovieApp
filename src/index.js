@@ -1,4 +1,5 @@
-import React, { createContext } from 'react';
+import React from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -37,8 +38,8 @@ const logger = ({ dispatch, getState }) => (next) => (action) => {
 const store = createStore(rootReducer, applyMiddleware(logger, thunk));
 console.log('state', store);
 
-export const StoreContext = createContext();
-console.log('StoreContext', StoreContext);
+//export const StoreContext = createContext();
+//console.log('StoreContext', StoreContext);
 /*console.log("Before State", store.getState());
 
 // store.dispatch({
@@ -47,7 +48,7 @@ console.log('StoreContext', StoreContext);
 // });
 
 console.log("After State", store.getState());*/
-class Provider extends React.Component {
+/*class Provider extends React.Component {
   render() {
     const { store } = this.props;
     return (
@@ -56,9 +57,9 @@ class Provider extends React.Component {
       </StoreContext.Provider>
     );
   }
-}
+}*/
 //const connectedAppComponent = connect(callback)(App);
-export function connect(callback) {
+/*export function connect(callback) {
   return function (Component) {
     class ConnectedComponent extends React.Component {
       constructor(props) {
@@ -88,7 +89,7 @@ export function connect(callback) {
     }
     return ConnectedComponentWrapper;
   };
-}
+}*/
 
 ReactDOM.render(
   <Provider store={store}>
